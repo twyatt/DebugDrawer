@@ -73,33 +73,39 @@ You are always welcome to suggest modules!
 
 Add Gradle dependencies:
 
+```gradle
+repositories {
+    maven { url "https://jitpack.io" }
+}
+```
+
 #### `DebugDrawer`
 ```gradle
 dependencies {
-   debugImplementation 'io.palaima.debugdrawer:debugdrawer:0.8.0'
-   releaseImplementation 'io.palaima.debugdrawer:debugdrawer-no-op:0.8.0'
+   debugImplementation 'com.github.twyatt.DebugDrawer:debugdrawer:timber-5.0.0-SNAPSHOT-20180831'
+   releaseImplementation 'com.github.twyatt.DebugDrawer:debugdrawer-no-op:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
 #### `DebugView`
 ```gradle
 dependencies {
-   debugImplementation 'io.palaima.debugdrawer:debugdrawer-view:0.8.0'
-   releaseImplementation 'io.palaima.debugdrawer:debugdrawer-view-no-op:0.8.0'
+   debugImplementation 'com.github.twyatt.DebugDrawer:debugdrawer-view:timber-5.0.0-SNAPSHOT-20180831'
+   releaseImplementation 'com.github.twyatt.DebugDrawer:debugdrawer-view-no-op:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
 `BuildModule`, `DeviceModule`, `SettingsModule`, `NetworkModule`
 ```gradle
 dependencies {
-   implementation 'io.palaima.debugdrawer:debugdrawer-commons:0.8.0'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-commons:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
 `ActionsModule` - `ButtonAction`, `SwitchAction`, `SpinnerAction`
 ```gradle
 dependencies {
-   implementation 'io.palaima.debugdrawer:debugdrawer-actions:0.8.0'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-actions:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
@@ -107,8 +113,8 @@ dependencies {
 [OkHttp](https://github.com/square/okhttp) library required
 ```gradle
 dependencies {
-   implementation 'io.palaima.debugdrawer:debugdrawer-okhttp:0.8.0'
-   implementation 'io.palaima.debugdrawer:debugdrawer-okhttp3:0.8.0'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-okhttp:timber-5.0.0-SNAPSHOT-20180831'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-okhttp3:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
@@ -116,7 +122,7 @@ dependencies {
 [Picasso](https://github.com/square/picasso) library required
 ```gradle
 dependencies {
-   implementation 'io.palaima.debugdrawer:debugdrawer-picasso:0.8.0'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-picasso:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
@@ -124,7 +130,7 @@ dependencies {
 [Glide](https://github.com/bumptech/glide) library required
 ```gradle
 dependencies {
-   implementation 'io.palaima.debugdrawer:debugdrawer-glide:0.8.0'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-glide:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
@@ -132,14 +138,14 @@ dependencies {
 [Scalpel](https://github.com/JakeWharton/scalpel) library required
 ```gradle
 dependencies {
-   implementation 'io.palaima.debugdrawer:debugdrawer-scalpel:0.8.0'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-scalpel:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
 `LocationModule`
 ```gradle
 dependencies {
-   implementation 'io.palaima.debugdrawer:debugdrawer-location:0.8.0'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-location:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
@@ -147,7 +153,7 @@ dependencies {
 [Timber](https://github.com/JakeWharton/timber) library required
 ```gradle
 dependencies {
-   implementation 'io.palaima.debugdrawer:debugdrawer-timber:0.8.0'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-timber:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
@@ -155,7 +161,7 @@ dependencies {
 [Takt](https://github.com/wasabeef/Takt) library required
 ```gradle
 dependencies {
-   implementation 'io.palaima.debugdrawer:debugdrawer-fps:0.8.0'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-fps:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
@@ -164,7 +170,7 @@ dependencies {
 [Lynx](https://github.com/pedrovgs/Lynx) & [Chuck](https://github.com/jgilfelt/chuck) libraries required
 ```gradle
 dependencies {
-   implementation 'io.palaima.debugdrawer:debugdrawer-logs:0.8.0'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-logs:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
@@ -172,7 +178,7 @@ dependencies {
 [OkHttp](https://github.com/square/okhttp) library required
 ```gradle
 dependencies {
-   implementation 'io.palaima.debugdrawer:debugdrawer-network-quality:0.8.0'
+   implementation 'com.github.twyatt.DebugDrawer:debugdrawer-network-quality:timber-5.0.0-SNAPSHOT-20180831'
 }
 ```
 
@@ -258,7 +264,7 @@ Application class example:
 
 ## Creating and Publishing Your Own Module
 
-Add `implementation 'io.palaima.debugdrawer:debugdrawer-base:0.8.0'` to your dependencies
+Add `implementation 'com.github.twyatt.DebugDrawer:debugdrawer-base:timber-5.0.0-SNAPSHOT-20180831'` to your dependencies
 
 Module must implement `DebugModule` interface or extend `DebugModuleAdapter` if you do not need lifecycle hooks
 
