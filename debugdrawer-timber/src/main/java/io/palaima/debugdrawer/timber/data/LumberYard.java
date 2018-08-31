@@ -1,7 +1,10 @@
 package io.palaima.debugdrawer.timber.data;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.NonNull;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,6 +17,8 @@ import java.util.Calendar;
 import java.util.Deque;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import io.palaima.debugdrawer.timber.model.LogEntry;
 import timber.log.Tree;
@@ -65,11 +70,49 @@ public class LumberYard {
         return sInstance;
     }
 
+    private static final int MAX_TAG_LENGTH = 23;
+    private static final int CALL_STACK_INDEX = 5;
+    private static final Pattern ANONYMOUS_CLASS = Pattern.compile("(\\$\\d+)+$");
+
     public Tree tree() {
+
         return new Tree() {
             @Override
             protected void performLog(int priority, String tag, Throwable throwable, String message) {
+                if (tag == null) {
+                    tag = getTag();
+                }
                 addEntry(new LogEntry(priority, tag, message, LOG_DATE_PATTERN.format(Calendar.getInstance().getTime())));
+            }
+
+            /**
+             * Extract the tag which should be used for the message from the {@code element}. By default
+             * this will use the class name without any anonymous class suffixes (e.g., {@code Foo$1}
+             * becomes {@code Foo}).
+             */
+            private String createStackElementTag(@NotNull StackTraceElement element) {
+                String tag = element.getClassName();
+                Matcher m = ANONYMOUS_CLASS.matcher(tag);
+                if (m.find()) {
+                    tag = m.replaceAll("");
+                }
+                tag = tag.substring(tag.lastIndexOf('.') + 1);
+                // Tag length limit was removed in API 24.
+                if (tag.length() <= MAX_TAG_LENGTH || Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    return tag;
+                }
+                return tag.substring(0, MAX_TAG_LENGTH);
+            }
+
+            private String getTag() {
+                // DO NOT switch this to Thread.getCurrentThread().getStackTrace(). The test will pass
+                // because Robolectric runs them on the JVM but on Android the elements are different.
+                StackTraceElement[] stackTrace = new Throwable().getStackTrace();
+                if (stackTrace.length <= CALL_STACK_INDEX) {
+                    throw new IllegalStateException(
+                            "Synthetic stacktrace didn't have enough elements: are you using proguard?");
+                }
+                return createStackElementTag(stackTrace[CALL_STACK_INDEX]);
             }
         };
     }
