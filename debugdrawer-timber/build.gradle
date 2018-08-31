@@ -21,7 +21,7 @@ android {
 dependencies {
     implementation project(':debugdrawer-base')
     implementation "com.android.support:appcompat-v7:$rootProject.ext.supportVersion"
-    compileOnly "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
+    implementation "com.jakewharton.timber:timber-android:$rootProject.ext.timberVersion"
 }
 
 ext {

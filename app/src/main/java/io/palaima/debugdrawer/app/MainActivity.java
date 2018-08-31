@@ -107,12 +107,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showDummyLog() {
-        Timber.d("Debug");
-        Timber.e("Error");
-        Timber.w("Warning");
-        Timber.i("Info");
-        Timber.v("Verbose");
-        Timber.wtf("WTF");
+        Timber.INSTANCE.log(Timber.DEBUG, null, null, "Debug");
+        Timber.INSTANCE.log(Timber.ERROR, null, null, "Error");
+        Timber.INSTANCE.log(Timber.WARNING, null, null, "Warning");
+        Timber.INSTANCE.log(Timber.INFO, null, null, "Info");
+        Timber.INSTANCE.log(Timber.VERBOSE, null, null, "Verbose");
+        Timber.INSTANCE.log(Timber.ASSERT, null, null, "Assert");
     }
 
     @Override

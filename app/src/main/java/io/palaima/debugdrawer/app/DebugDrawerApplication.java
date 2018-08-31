@@ -6,6 +6,7 @@ import android.support.multidex.MultiDex;
 import com.squareup.leakcanary.LeakCanary;
 
 import io.palaima.debugdrawer.timber.data.LumberYard;
+import timber.log.LogcatTree;
 import timber.log.Timber;
 
 public class DebugDrawerApplication extends Application {
@@ -19,7 +20,7 @@ public class DebugDrawerApplication extends Application {
         LumberYard lumberYard = LumberYard.getInstance(this);
         lumberYard.cleanUp();
 
-        Timber.plant(lumberYard.tree());
-        Timber.plant(new Timber.DebugTree());
+        Timber.INSTANCE.plant(lumberYard.tree());
+        Timber.INSTANCE.plant(new LogcatTree());
     }
 }

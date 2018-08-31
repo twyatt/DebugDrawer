@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Locale;
 
 import io.palaima.debugdrawer.timber.model.LogEntry;
-import timber.log.Timber;
+import timber.log.Tree;
 
 public class LumberYard {
 
@@ -65,10 +65,10 @@ public class LumberYard {
         return sInstance;
     }
 
-    public Timber.Tree tree() {
-        return new Timber.DebugTree() {
+    public Tree tree() {
+        return new Tree() {
             @Override
-            protected void log(int priority, String tag, String message, Throwable t) {
+            protected void performLog(int priority, String tag, Throwable throwable, String message) {
                 addEntry(new LogEntry(priority, tag, message, LOG_DATE_PATTERN.format(Calendar.getInstance().getTime())));
             }
         };

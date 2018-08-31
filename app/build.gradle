@@ -39,7 +39,7 @@ dependencies {
     implementation "com.jakewharton.picasso:picasso2-okhttp3-downloader:$rootProject.ext.picasso2Okhttp3Downloader"
     implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
     implementation "jp.wasabeef:takt:$rootProject.ext.taktVersion"
-    implementation "com.jakewharton.timber:timber:$rootProject.ext.timberVersion"
+    implementation "com.jakewharton.timber:timber-android:$rootProject.ext.timberVersion"
     implementation "com.jakewharton.scalpel:scalpel:$rootProject.ext.scalpelVersion"
     implementation "com.google.android.gms:play-services-location:$rootProject.ext.playServiceVersion"
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideVersion"

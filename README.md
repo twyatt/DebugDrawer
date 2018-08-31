@@ -251,7 +251,7 @@ Application class example:
             lumberYard.cleanUp();
 
             Timber.plant(lumberYard.tree());
-            Timber.plant(new Timber.DebugTree());
+            Timber.plant(new LogcatTree());
         }
     }
 ```
